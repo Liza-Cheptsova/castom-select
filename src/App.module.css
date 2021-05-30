@@ -21,6 +21,13 @@ body {
   border: 1px solid #bdbdbd;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.select_head.active,
+.options.active {
+  border: 1px solid mediumslateblue;
+  transition: 0.2s ease-in-out;
 }
 
 .select_head,
@@ -54,7 +61,8 @@ body {
 }
 
 .options span {
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid #e5e4ec;
+  transition: 0.1s ease-in-out;
 }
 
 .options span.item.active {

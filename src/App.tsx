@@ -21,12 +21,12 @@ function App() {
 
   return (
     <div className={s.select_container}>
-      <div className={s.select_head} onClick={setEditModeHandler}>
+      <div className={s.select_head + " " + (editMode ? s.active : "")} onClick={setEditModeHandler}>
         <span>{selectesOption || 0}</span>
         <span className={s.arrow + " " + (editMode ? s.up : "")}>&#9660;</span>
       </div>
       {editMode && (
-        <div className={s.options}>
+        <div className={s.options + " " + (editMode ? s.active : "")}>
           {options.map((option: number, index) => (
             //@ts-ignore
             <span
