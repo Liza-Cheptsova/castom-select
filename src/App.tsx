@@ -1,11 +1,14 @@
-import { DetailedHTMLProps, MouseEventHandler, useState } from "react";
-import "./App.css";
+import { useState } from "react";
+import s from "./App.module.css";
 
 function App() {
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [selectesOption, setSelectedOption] = useState<any>(null);
+  const [selectesOption, setSelectedOption] = useState<number | null>(null);
+  const [hoveredItemValue, setHoveredItemValue] = useState<any>(null);
 
   const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const hoveredItem = options.find((i) => i === hoveredItemValue);
 
   const setOptionHandler = (value: number) => () => {
     setSelectedOption(value);
@@ -17,15 +20,23 @@ function App() {
   };
 
   return (
-    <div className='select-container'>
-      <div className='select-head' onClick={setEditModeHandler}>
+    <div className={s.select_container}>
+      <div className={s.select_head} onClick={setEditModeHandler}>
         <span>{selectesOption || 0}</span>
+        <span className={s.arrow + " " + (editMode ? s.up : "")}>&#9660;</span>
       </div>
       {editMode && (
-        <div className='options'>
-          {options.map((option: any, index) => (
+        <div className={s.options}>
+          {options.map((option: number, index) => (
             //@ts-ignore
-            <span onClick={setOptionHandler(option)} key={index}>
+            <span
+              onMouseEnter={() => {
+                setHoveredItemValue(option);
+              }}
+              onClick={setOptionHandler(option)}
+              key={index}
+              className={s.item + " " + (hoveredItem === option ? s.active : "")}
+            >
               {option}
             </span>
           ))}

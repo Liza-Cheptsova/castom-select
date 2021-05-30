@@ -5,33 +5,42 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: lightblue;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
 }
 
-.select-container {
+.select_container {
   min-width: 200px;
   position: relative;
 }
 
-.select-head,
+.select_head,
 .options {
-  background-color: snow;
   border: 1px solid #bdbdbd;
   border-radius: 8px;
   cursor: pointer;
 }
 
-.select-head,
+.select_head,
 .options span {
   padding: 5px 10px;
 }
 
-.select-head {
+.select_head {
   position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrow {
+  transition: 0.3s ease-out;
+}
+
+.arrow.up {
+  transform: rotate(180deg);
+  transition: 0.3s ease-out;
 }
 
 .options {
@@ -46,6 +55,11 @@ body {
 
 .options span {
   border-bottom: 1px solid #bdbdbd;
+}
+
+.options span.item.active {
+  background-color: mediumslateblue;
+  color: white;
 }
 
 .options span:last-child {
